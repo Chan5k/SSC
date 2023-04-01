@@ -21,7 +21,7 @@ def main():
         print("3. Test CPU stress")
         print("4. Test disk speed ")
         print("5. Test security (Don't use this on a production server!)")
-        print("6. Improve firewall rules")
+        print("6. Improve firewall rules (Don't use this on a production server!)")
         print("7. Change DNS servers")
         print("8. Check DNS servers")
         print("9. Exit")
@@ -31,18 +31,18 @@ def main():
         if selection == "1":
             test_internet_speed()
         elif selection == "2":
+            improve_internet_speed()
+        elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
             test_cpu_stress(duration)
             score = get_cpu_score()
             print(f"CPU score: {score}")
-        elif selection == "3":
-            test_disk_speed()
         elif selection == "4":
-            test_security()
+            test_disk_speed()
         elif selection == "5":
-            improve_firewall_rules()
+            test_security()
         elif selection == "6":
-            improve_internet_speed()
+            improve_firewall_rules()
         elif selection == "7":
             dns_servers = input("Enter comma-separated list of DNS servers (e.g. 1.1.1.1,8.8.8.8): ")
             change_dns_servers(dns_servers)
