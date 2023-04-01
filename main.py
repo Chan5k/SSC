@@ -16,7 +16,18 @@ from check_dns_servers import check_dns_servers
 from remove_useless_files import remove_useless_files
 from scan_wifi_networks import scan_wifi_networks
 from show_interfaces import show_interfaces
-from ping_website import ping_website
+
+
+def ping_website():
+    website = input("Enter the website to ping: ")
+    ping_cmd = "ping -c 5 " + website
+    ping_result = os.system(ping_cmd)
+
+    if ping_result == 0:
+        print(f"{website} is up and reachable")
+    else:
+        print(f"{website} is down")
+
 
 def main():
     while True:
@@ -65,8 +76,7 @@ def main():
         elif selection == "11":
             show_interfaces()
         elif selection == "12":
-            target = input("Enter a website to ping: ")
-            ping_website(target)
+            ping_website()
         elif selection == "13":
             sys.exit()
 
@@ -83,6 +93,7 @@ def main():
                 os.system("clear")
         else:
             sys.exit()
+
 
 if __name__ == "__main__":
     main()
