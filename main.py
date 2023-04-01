@@ -44,7 +44,7 @@ def main():
         elif selection == "6":
             improve_internet_speed()
         elif selection == "7":
-            dns_servers = input("Enter the IP addresses of the new DNS servers (separated by comma): ")
+            dns_servers = input("Enter comma-separated list of DNS servers (e.g. 1.1.1.1,8.8.8.8): ")
             change_dns_servers(dns_servers)
         elif selection == "8":
             check_dns_servers()

@@ -1,6 +1,9 @@
 import os
 
 def change_dns_servers(dns_servers):
+    # split the comma-separated string into a list
+    dns_servers = dns_servers.split(',')
+
     # remove the existing nameserver entries from /etc/resolvconf/resolv.conf.d/head
     os.system("sudo sed -i '/nameserver/d' /etc/resolvconf/resolv.conf.d/head")
 
