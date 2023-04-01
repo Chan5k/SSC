@@ -12,21 +12,23 @@ from improve_internet_speed import improve_internet_speed
 from change_dns_servers import change_dns_servers
 from check_dns_servers import check_dns_servers
 from remove_useless_files import remove_useless_files
+from scan_wifi_networks import scan_wifi_networks
 
 def main():
     while True:
         # ask the user what test they want to run
-        print("Welcome to SSC! What would you like to do? Enter the corresponding number:")
+        print("What would you like to do? Enter the corresponding number:")
         print("1. Test internet speed")
         print("2. Improve internet speed")
         print("3. Test CPU stress")
-        print("4. Test disk speed ")
+        print("4. Test disk speed")
         print("5. Test security (Don't use this on a production server!)")
         print("6. Improve firewall rules (Don't use this on a production server!)")
         print("7. Change DNS servers")
         print("8. Check DNS servers")
         print("9. Remove useless files")
-        print("10. Exit")
+        print("10. Scan available Wi-Fi networks")
+        print("11. Exit")
         selection = input("> ")
 
         # execute the selected option
@@ -53,6 +55,8 @@ def main():
         elif selection == "9":
             remove_useless_files()
         elif selection == "10":
+            scan_wifi_networks()
+        elif selection == "11":
             sys.exit()
 
         # ask the user if they want to return to the main menu or exit
