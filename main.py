@@ -45,7 +45,8 @@ def main():
         print("11. Show available network interfaces")
         print("12. Ping a website")
         print("13. Backup important files")
-        print("14. Exit")
+        print("14. Check system for malware (BETA)")
+        print("15. Exit")
         selection = input("> ")
 
         # execute the selected option
