@@ -3,8 +3,10 @@ import sys
 import socket
 import subprocess
 import time
+from termcolor import colored
 
-sys.path.append("scripts")
+scripts_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), 'scripts'))
+sys.path.insert(0, scripts_dir)
 
 from internet import test_internet_speed
 from cpu import test_cpu_stress, get_cpu_score
@@ -17,13 +19,14 @@ from check_dns_servers import check_dns_servers
 from remove_useless_files import remove_useless_files
 from scan_wifi_networks import scan_wifi_networks
 from show_interfaces import show_interfaces
-from ping import ping
 from backup import backup_files
+
+from ping import ping
 
 def main():
     # Display welcome message
-    print("\033[1m" + "Welcome to Sys-Speed-Check!" + "\033[0m")
-    print("\033[1m" + "Let's optimize your system!" + "\033[0m")
+    print(colored("Welcome to Sys-Speed-Check!", "green"))
+    print(colored("Let's optimize your system!", "green"))
     print()
 
     while True:
@@ -73,12 +76,12 @@ def main():
         elif selection == "11":
             show_interfaces()
         elif selection == "12":
-            target = input("Enter a website to ping: ")
-            ping(target)
+            host = input("Enter a website to ping: ")
+            result = ping(host)
+            print(result)
         elif selection == "13":
-            source_dir = input("Enter the path of the directory to backup: ")
-            dest_dir = input("Enter the path of the destination directory: ")
-            backup_files(source_dir, dest_dir)
+            file_path = input("Enter the path of the file to backup: ")
+            backup_files(file_path)
         elif selection == "14":
             sys.exit()
 
@@ -86,10 +89,6 @@ def main():
         print()
         choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
         print()
-
-
-
-        # clear the screen if the user chooses to return to the main menu
         if choice == "" or choice.lower() == "exit":
             if os.name == "nt":
                 os.system("cls")
@@ -100,3 +99,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
