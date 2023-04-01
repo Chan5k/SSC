@@ -11,6 +11,7 @@ This script has the following features:
     Improve internet speed
     Change DNS servers
     Check DNS servers
+    Remove useless files
 # Usage
      
      python3 main.py
