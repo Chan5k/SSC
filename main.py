@@ -32,7 +32,7 @@ def main():
         print("7. Change DNS servers")
         print("8. Check DNS servers")
         print("9. Remove useless files")
-        print("10. Scan available WiFi networks")
+        print("10. Scan available WiFi networks (Only works if you use WiFi)")
         print("11. Show available network interfaces")
         print("12. Ping a website (Will be improved)")
         print("13. Exit")
