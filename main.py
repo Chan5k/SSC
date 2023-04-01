@@ -1,6 +1,6 @@
 import os
 import sys
-import socket
+import subprocess
 sys.path.append("scripts")
 
 from internet import test_internet_speed
@@ -13,6 +13,7 @@ from change_dns_servers import change_dns_servers
 from check_dns_servers import check_dns_servers
 from remove_useless_files import remove_useless_files
 from scan_wifi_networks import scan_wifi_networks
+from show_interfaces import show_interfaces
 
 def main():
     while True:
@@ -21,14 +22,15 @@ def main():
         print("1. Test internet speed")
         print("2. Improve internet speed")
         print("3. Test CPU stress")
-        print("4. Test disk speed")
+        print("4. Test disk speed ")
         print("5. Test security (Don't use this on a production server!)")
         print("6. Improve firewall rules (Don't use this on a production server!)")
         print("7. Change DNS servers")
         print("8. Check DNS servers")
         print("9. Remove useless files")
-        print("10. Scan available Wi-Fi networks")
-        print("11. Exit")
+        print("10. Scan available wifi networks")
+        print("11. Show available interfaces")
+        print("12. Exit")
         selection = input("> ")
 
         # execute the selected option
@@ -57,6 +59,8 @@ def main():
         elif selection == "10":
             scan_wifi_networks()
         elif selection == "11":
+            show_interfaces()
+        elif selection == "12":
             sys.exit()
 
         # ask the user if they want to return to the main menu or exit
