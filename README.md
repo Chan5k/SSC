@@ -7,6 +7,7 @@ This script has the following features:
      •	Check CPU speed
      •	Check internet connection
      •	Check security level
+     •  Improve firewall rules
 # Usage
      
      python3 main.py
