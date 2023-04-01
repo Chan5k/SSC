@@ -1,3 +1,4 @@
+from improve_internet_speed import improve_internet_speed
 import os
 import sys
 sys.path.append("scripts")
@@ -7,8 +8,6 @@ from cpu import test_cpu_stress, get_cpu_score
 from disk import test_disk_speed
 from security import test_security
 from firewall import improve_firewall_rules
-from improve_internet_speed import improve_internet_speed
-
 
 def main():
     while True:
@@ -27,7 +26,8 @@ def main():
         if selection == "1":
             test_internet_speed()
         elif selection == "2":
-            improve_internet_speed()
+            interface = input("Enter your network interface (e.g. eth0, enp0s3): ")
+            improve_internet_speed(interface)
         elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
             test_cpu_stress(duration)
@@ -57,6 +57,7 @@ def main():
                 os.system("clear")
         else:
             sys.exit()
+
 
 if __name__ == "__main__":
     main()
