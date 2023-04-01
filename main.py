@@ -34,7 +34,7 @@ def main():
         print("9. Remove useless files")
         print("10. Scan available WiFi networks")
         print("11. Show available network interfaces")
-        print("12. Ping a website")
+        print("12. Ping a website (Will be improved)")
         print("13. Exit")
         selection = input("> ")
 
