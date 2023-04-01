@@ -20,7 +20,7 @@ from remove_useless_files import remove_useless_files
 from scan_wifi_networks import scan_wifi_networks
 from show_interfaces import show_interfaces
 from backup import backup_files
-
+from malware_check import scan_for_malware
 from ping import ping
 
 def main():
@@ -83,6 +83,9 @@ def main():
             file_path = input("Enter the path of the file to backup: ")
             backup_files(file_path)
         elif selection == "14":
+            malware_scan_output = scan_for_malware()
+            print(malware_scan_output)
+        elif selection == "15":
             sys.exit()
 
         # ask the user if they want to return to the main menu or exit
