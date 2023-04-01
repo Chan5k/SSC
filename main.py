@@ -1,5 +1,6 @@
 import os
 import sys
+import socket
 sys.path.append("scripts")
 
 from internet import test_internet_speed
