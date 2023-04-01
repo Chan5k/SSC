@@ -1,18 +1,9 @@
 import os
 import sys
 import socket
-import platform
-
-if platform.system() != "Linux":
-    print("Sorry, this program only runs on Linux systems.")
-    sys.exit()
-
-try:
-    import subprocess
-    from termcolor import colored
-except ImportError as e:
-    print(f"Error: {e}. Please install required modules by running 'pip install -r requirements.txt'")
-    sys.exit()
+import subprocess
+import time
+from termcolor import colored
 
 sys.path.append("scripts")
 
@@ -29,18 +20,11 @@ from scan_wifi_networks import scan_wifi_networks
 from show_interfaces import show_interfaces
 from ping import ping_host
 
-
-def print_title():
-    title = "Sys Speed Check"
-    print(colored("=" * len(title), "green"))
-    print(colored(title, "green"))
-    print(colored("=" * len(title), "green"))
-    print()
-
-
 def main():
-    # Print title
-    print_title()
+    # print a cool message and wait for a few seconds
+    print(colored("Welcome to Sys-Speed-Check!\n\n", "green"))
+    print("This program will test and optimize your system for maximum speed and security.\n\n")
+    time.sleep(1)
 
     while True:
         # ask the user what test they want to run
@@ -100,3 +84,13 @@ def main():
         print()
 
         # clear the screen if the user chooses to return to the main menu
+        if choice == "" or choice.lower() == "exit":
+            if os.name == "nt":
+                os.system("cls")
+            else:
+                os.system("clear")
+        else:
+            sys.exit()
+
+if __name__ == "__main__":
+    main()
