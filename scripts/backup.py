@@ -1,15 +1,22 @@
 import os
 import shutil
 
-def backup_files(source_dir, dest_dir):
+def backup_files():
     """
-    Creates a backup of a file by copying it to a new file with a '.bak' extension.
+    Creates a backup of files in a directory by copying them to a new file with a '.bak' extension.
 
     Args:
-    file_path (str): The path of the file to backup.
+    source_dir (str): The path of the source directory to backup.
+    dest_dir (str): The path of the destination directory to store the backup files.
     """
+    source_dir = input("Enter the path of the source directory to backup: ")
     if not os.path.isdir(source_dir):
         print(f"Error: {source_dir} is not a directory")
+        return
+
+    dest_dir = input("Enter the path of the destination directory to store the backup files: ")
+    if not os.path.isdir(dest_dir):
+        print(f"Error: {dest_dir} is not a directory")
         return
 
     # Create a backup file by copying the original file
