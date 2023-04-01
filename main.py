@@ -1,7 +1,5 @@
 import os
 import sys
-import subprocess
-
 sys.path.append("scripts")
 
 from internet import test_internet_speed
@@ -11,6 +9,7 @@ from security import test_security
 from firewall import improve_firewall_rules
 from improve_internet_speed import improve_internet_speed
 from change_dns_servers import change_dns_servers
+from check_dns_servers import check_dns_servers
 
 def main():
     while True:
@@ -23,29 +22,32 @@ def main():
         print("5. Test security (Don't use this on a production server!)")
         print("6. Improve firewall rules")
         print("7. Change DNS servers")
-        print("8. Exit")
+        print("8. Check DNS servers")
+        print("9. Exit")
         selection = input("> ")
 
         # execute the selected option
         if selection == "1":
             test_internet_speed()
         elif selection == "2":
-            improve_internet_speed()
-        elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
             test_cpu_stress(duration)
             score = get_cpu_score()
             print(f"CPU score: {score}")
-        elif selection == "4":
+        elif selection == "3":
             test_disk_speed()
-        elif selection == "5":
+        elif selection == "4":
             test_security()
-        elif selection == "6":
+        elif selection == "5":
             improve_firewall_rules()
+        elif selection == "6":
+            improve_internet_speed()
         elif selection == "7":
-            dns_servers = input("Enter the new DNS servers (separated by space): ").split()
+            dns_servers = input("Enter the IP addresses of the new DNS servers (separated by comma): ")
             change_dns_servers(dns_servers)
         elif selection == "8":
+            check_dns_servers()
+        elif selection == "9":
             sys.exit()
 
         # ask the user if they want to return to the main menu or exit
@@ -61,8 +63,6 @@ def main():
                 os.system("clear")
         else:
             sys.exit()
-
-
 
 if __name__ == "__main__":
     main()
