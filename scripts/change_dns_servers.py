@@ -1,33 +1,19 @@
-import subprocess
+import os
 
-def change_dns_servers():
-    print("Which DNS servers would you like to use?")
-    print("1. Cloudflare (1.1.1.1, 1.0.0.1)")
-    print("2. Google (8.8.8.8, 8.8.4.4)")
-    selection = input("> ")
+def change_dns_servers(dns_servers):
+    # remove the existing nameserver entries from /etc/resolvconf/resolv.conf.d/head
+    os.system("sudo sed -i '/nameserver/d' /etc/resolvconf/resolv.conf.d/head")
 
-    if selection == "1":
-        nameservers = ["1.1.1.1", "1.0.0.1"]
-    elif selection == "2":
-        nameservers = ["8.8.8.8", "8.8.4.4"]
-    else:
-        print("Invalid selection.")
-        return
-
-    # Remove old nameservers from /etc/resolv.conf
-    subprocess.run(["sudo", "sed", "-i", "/nameserver/d", "/etc/resolv.conf"])
-
-    # Remove old nameservers from /etc/resolvconf/resolv.conf.d/head
-    subprocess.run(["sudo", "sed", "-i", "/nameserver/d", "/etc/resolvconf/resolv.conf.d/head"])
-
-    # Add new nameservers to /etc/resolv.conf and /etc/resolvconf/resolv.conf.d/head
-    with open("/etc/resolv.conf", "a") as f:
-        for nameserver in nameservers:
-            f.write("nameserver {}\n".format(nameserver))
+    # write the new nameserver entries to /etc/resolvconf/resolv.conf.d/head
     with open("/etc/resolvconf/resolv.conf.d/head", "a") as f:
-        for nameserver in nameservers:
-            f.write("nameserver {}\n".format(nameserver))
+        f.write("\n".join(["nameserver " + dns_server for dns_server in dns_servers]) + "\n")
 
-    # Restart the resolvconf service to apply the changes
-    subprocess.run(["sudo", "systemctl", "restart", "resolvconf"])
-    print("DNS servers updated successfully.")
+    # remove the existing nameserver entries from /etc/resolv.conf
+    os.system("sudo sed -i '/nameserver/d' /etc/resolv.conf")
+
+    # write the new nameserver entries to /etc/resolv.conf
+    with open("/etc/resolv.conf", "a") as f:
+        f.write("\n".join(["nameserver " + dns_server for dns_server in dns_servers]) + "\n")
+
+    # update resolvconf to use the new nameserver entries
+    os.system("sudo resolvconf -u")

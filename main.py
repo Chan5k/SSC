@@ -12,7 +12,6 @@ from firewall import improve_firewall_rules
 from improve_internet_speed import improve_internet_speed
 from change_dns_servers import change_dns_servers
 
-
 def main():
     while True:
         # ask the user what test they want to run
@@ -31,8 +30,7 @@ def main():
         if selection == "1":
             test_internet_speed()
         elif selection == "2":
-            interface = input("Enter the name of your network interface (e.g. eth0): ")
-            improve_internet_speed(interface)
+            improve_internet_speed()
         elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
             test_cpu_stress(duration)
@@ -45,7 +43,7 @@ def main():
         elif selection == "6":
             improve_firewall_rules()
         elif selection == "7":
-            dns_servers = input("Enter the DNS servers you want to use (e.g. '1.1.1.1, 1.0.0.1'): ")
+            dns_servers = input("Enter the new DNS servers (separated by space): ").split()
             change_dns_servers(dns_servers)
         elif selection == "8":
             sys.exit()
@@ -61,16 +59,9 @@ def main():
                 os.system("cls")
             else:
                 os.system("clear")
-                if selection == "2":
-                    subprocess.run(["sudo", "systemctl", "stop", "systemd-resolved.service"])
-                    subprocess.run(["sudo", "systemctl", "disable", "systemd-resolved.service"])
-                    subprocess.run(["sudo", "systemctl", "stop", "resolvconf.service"])
-                    subprocess.run(["sudo", "systemctl", "disable", "resolvconf.service"])
-                    subprocess.run(["sudo", "rm", "/etc/resolv.conf"])
-                    subprocess.run(["sudo", "touch", "/etc/resolv.conf"])
-                    subprocess.run(["sudo", "chmod", "777", "/etc/resolv.conf"])
         else:
-            continue
+            sys.exit()
+
 
 
 if __name__ == "__main__":
