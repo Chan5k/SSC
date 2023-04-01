@@ -7,10 +7,10 @@ from scripts.security_test import test_security
 def main():
     # ask the user what test they want to run
     print("Which test would you like to run? Enter the corresponding number:")
-    print("1. Internet speed test")
-    print("2. CPU stress test")
-    print("3. Disk speed test")
-    print("4. Security test")
+    print("1. Internet speed test (Ookla Speedtest)")
+    print("2. CPU stress test (stress-ng)")
+    print("3. Disk speed test (HDparm)")
+    print("4. Security test (NMAP scan)")
     selection = input("> ")
 
     # execute the selected test
