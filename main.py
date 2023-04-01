@@ -11,18 +11,6 @@ from firewall import improve_firewall_rules
 from improve_internet_speed import improve_internet_speed
 from change_dns_servers import change_dns_servers
 from check_dns_servers import check_dns_servers
-
-import sys
-sys.path.append("scripts")
-
-from internet import test_internet_speed
-from cpu import test_cpu_stress, get_cpu_score
-from disk import test_disk_speed
-from security import test_security
-from firewall import improve_firewall_rules
-from improve_internet_speed import improve_internet_speed
-from change_dns_servers import change_dns_servers
-from check_dns_servers import check_dns_servers
 from remove_useless_files import remove_useless_files
 
 def main():
@@ -31,7 +19,7 @@ def main():
         print("What would you like to do? Enter the corresponding number:")
         print("1. Test internet speed")
         print("2. Improve internet speed")
-        print(". Test CPU stress")
+        print("3. Test CPU stress")
         print("4. Test disk speed ")
         print("5. Test security (Don't use this on a production server!)")
         print("6. Improve firewall rules (Don't use this on a production server!)")
@@ -80,8 +68,6 @@ def main():
                 os.system("clear")
         else:
             sys.exit()
-
-
 
 if __name__ == "__main__":
     main()
