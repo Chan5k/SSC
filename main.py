@@ -8,6 +8,7 @@ from disk import test_disk_speed
 from security import test_security
 from firewall import improve_firewall_rules
 from change_dns_servers import change_dns_servers
+from improve_internet_speed import improve_internet_speed
 
 def main():
     while True:
@@ -15,11 +16,12 @@ def main():
         print("What would you like to do? Enter the corresponding number:")
         print("1. Test internet speed")
         print("2. Test CPU stress")
-        print("3. Test disk speed ")
+        print("3. Test disk speed")
         print("4. Test security (Don't use this on a production server!)")
         print("5. Improve firewall rules")
-        print("6. Change DNS servers to Cloudflare or Google")
-        print("7. Exit")
+        print("6. Improve internet speed")
+        print("7. Change DNS servers")
+        print("8. Exit")
         selection = input("> ")
 
         # execute the selected option
@@ -37,8 +39,12 @@ def main():
         elif selection == "5":
             improve_firewall_rules()
         elif selection == "6":
-            change_dns_servers()
+            interface = input("Enter the name of your network interface (e.g. eth0): ")
+            improve_internet_speed(interface)
         elif selection == "7":
+            dns_server = input("Enter the new DNS server (e.g. 1.1.1.1): ")
+            change_dns_servers(dns_server)
+        elif selection == "8":
             sys.exit()
 
         # ask the user if they want to return to the main menu or exit
