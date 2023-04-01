@@ -7,8 +7,10 @@ This script has the following features:
      •	Check CPU speed
      •	Check internet connection
      •	Check security level
-     •  Improve firewall rules
-     •  Improve internet speed
+     •    Improve firewall rules
+     •    Improve internet speed
+     •    Change DNS servers
+     •    Check DNS servers
 # Usage
      
      python3 main.py
