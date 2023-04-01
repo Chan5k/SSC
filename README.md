@@ -3,15 +3,15 @@ Sys-Speed-Check is a Linux-based command-line tool that checks the speed of disk
 
 # Features
 
-    - Internet speed test
-    - CPU Performance test
-    - Disk speed test
+     Internet speed test
+     CPU Performance test
+     Disk speed test
 
 The script uses separate files for each test, and requires the following Python packages to be installed:
     
-    - `speedtest-cli`
-    - `psutil`
-    - `py-cpuinfo`
+    speedtest-cli
+    psutil
+    py-cpuinfo
 
 # Installation
 To install the required Python packages, run the following command:
