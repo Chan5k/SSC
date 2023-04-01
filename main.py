@@ -1,15 +1,17 @@
-
 import os
 import sys
 sys.path.append("scripts")
-from scripts.improve_internet_speed import improve_internet_speed
+
 from internet import test_internet_speed
 from cpu import test_cpu_stress, get_cpu_score
 from disk import test_disk_speed
 from security import test_security
 from firewall import improve_firewall_rules
+from improve_internet_speed import improve_internet_speed
 
 def main():
+    has_run = False  # initialize flag to False
+
     while True:
         # ask the user what test they want to run
         print("What would you like to do? Enter the corresponding number:")
@@ -26,7 +28,7 @@ def main():
         if selection == "1":
             test_internet_speed()
         elif selection == "2":
-            interface = input("Enter your network interface (e.g. eth0, enp0s3): ")
+            interface = input("Enter the name of your network interface (e.g. en0): ")
             improve_internet_speed(interface)
         elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
@@ -39,32 +41,25 @@ def main():
             test_security()
         elif selection == "6":
             improve_firewall_rules()
-        elif selection == "7":
-            sys.exit()
+
+        if has_run:  # prompt to return to main menu or exit after the first run
+            # ask the user if they want to return to the main menu or exit
+            print()
+            choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
+            print()
+
+            # clear the screen if the user chooses to return to the main menu
+            if choice == "" or choice.lower() == "exit":
+                if os.name == "nt":
+                    os.system("cls")
+                else:
+                    os.system("clear")
         else:
-            print("Invalid selection.")
+            has_run = True  # set the flag to True after the first run
 
-        # ask the user if they want to return to the main menu or exit
-        # ask the user if they want to return to the main menu or exit
-print()
-choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
-print()
-
-# clear the screen if the user chooses to return to the main menu
-if choice == "":
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
-elif choice.lower() == "exit":
-    sys.exit()
-else:
-    print("Invalid input. Returning to main menu.")
-    if os.name == "nt":
-        os.system("cls")
-    else:
-        os.system("clear")
-
+        # exit the program if the user types "exit"
+        if choice.lower() == "exit":
+            sys.exit()
 
 if __name__ == "__main__":
     main()
