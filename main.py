@@ -37,15 +37,11 @@ def main():
 
         # ask the user if they want to return to the main menu or exit
         print()
-        try:
-            choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
-            print()
-        except EOFError:
-            # clear the buffer if there is no input left
-            choice = ""
+        choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
+        print()
 
         # clear the screen if the user chooses to return to the main menu
-        if choice == "":
+        if choice == "" or choice.lower() == "exit":
             if os.name == "nt":
                 os.system("cls")
             else:
