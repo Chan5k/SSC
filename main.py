@@ -20,8 +20,8 @@ from remove_useless_files import remove_useless_files
 from scan_wifi_networks import scan_wifi_networks
 from show_interfaces import show_interfaces
 from backup import backup_files
-from malware_check import scan_for_malware
 from ping import ping
+
 
 def main():
     # Display welcome message
@@ -45,8 +45,7 @@ def main():
         print("11. Show available network interfaces")
         print("12. Ping a website")
         print("13. Backup important files")
-        print("14. Check system for malware (BETA)")
-        print("15. Exit")
+        print("14. Exit")
         selection = input("> ")
 
         # execute the selected option
@@ -81,13 +80,14 @@ def main():
             result = ping(host)
             print(result)
         elif selection == "13":
-            file_path = input("Enter the path of the file to backup: ")
-            backup_files(file_path)
+            source_dir = input("Enter the path of the source directory to backup: ")
+            dest_dir = input("Enter the path of the destination directory to backup: ")
+            backup_files(source_dir, dest_dir)
         elif selection == "14":
-            malware_scan_output = scan_for_malware()
-            print(malware_scan_output)
-        elif selection == "15":
             sys.exit()
+
+        # ask the user if they want to return to the main menu or exit
+
 
         # ask the user if they want to return to the main menu or exit
         print()
