@@ -12,3 +12,10 @@ This script has the following features:
      python3 main.py
      
 This will give you 4 options for you to choose from.
+
+# Contributing
+
+Feel free to fork the project or contact me for further developing
+
+# License
+This project is currently under the MIT license
