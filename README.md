@@ -7,3 +7,8 @@ This script has the following features:
      •	Check CPU speed
      •	Check internet connection
      •	Check security level
+# Usage
+     
+     python3 main.py
+     
+This will give you 4 options for you to choose from.
