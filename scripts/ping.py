@@ -9,11 +9,8 @@ def ping_host(host):
     
     # Parse the output to extract relevant information
     lines = output.strip().split("\n")
-    if len(lines) < 2:
-        return f"Unable to ping host {host}"
-    stats = lines[-1].split(", ")
-    packet_loss = stats[2].split()[0]
-    min_time, avg_time, max_time, mdev = [time.split()[1] for time in stats[3:]]
+    rtt_stats = lines[-1].split()[3].split("/")
+    packet_loss = lines[-2].split(",")[2].split()[0]
     
     # Return a formatted string with the ping results
-    return f"Ping statistics for {host}:\n\tPacket Loss = {packet_loss}\n\tMinimum Time = {min_time}\n\tAverage Time = {avg_time}\n\tMaximum Time = {max_time}\n\tStandard Deviation = {mdev}"
+    return f"Ping statistics for {host}:\n\tPacket Loss = {packet_loss}%\n\tMinimum Time = {rtt_stats[0]} ms\n\tAverage Time = {rtt_stats[1]} ms\n\tMaximum Time = {rtt_stats[2]} ms\n\tStandard Deviation = {rtt_stats[3]} ms"
