@@ -9,6 +9,8 @@ def ping_host(host):
     
     # Parse the output to extract relevant information
     lines = output.strip().split("\n")
+    if len(lines) < 2:
+        return f"Unable to ping host {host}"
     stats = lines[-1].split(", ")
     packet_loss = stats[2].split()[0]
     min_time, avg_time, max_time, mdev = [time.split()[1] for time in stats[3:]]
