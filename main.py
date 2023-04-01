@@ -25,9 +25,10 @@ def main():
         # execute the selected option
         if selection == "1":
             test_internet_speed()
-        elif selection == "2":
-            interface = input("Enter your network interface: ")
+        if selection == "2":
+            interface = input("Enter the name of your network interface (e.g. eth0): ")
             improve_internet_speed(interface)
+
         elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
             test_cpu_stress(duration)
