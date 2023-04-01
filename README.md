@@ -8,6 +8,7 @@ This script has the following features:
      •	Check internet connection
      •	Check security level
      •  Improve firewall rules
+     •  Improve internet speed
 # Usage
      
      python3 main.py
