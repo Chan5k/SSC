@@ -16,7 +16,7 @@ from remove_useless_files import remove_useless_files
 def main():
     while True:
         # ask the user what test they want to run
-        print("What would you like to do? Enter the corresponding number:")
+        print("Welcome to SSC! What would you like to do? Enter the corresponding number:")
         print("1. Test internet speed")
         print("2. Improve internet speed")
         print("3. Test CPU stress")
