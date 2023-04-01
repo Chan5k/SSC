@@ -19,7 +19,7 @@ def main():
     print("1. Test internet speed")
     print("2. Test CPU stress")
     print("3. Test disk speed")
-    print("4. Test security")
+    print("4. Test security (BETA DON'T USE IT)")
     print("5. Improve firewall rules")
     selection = input("> ")
 
