@@ -1,5 +1,5 @@
 # Sys-Speed-Check
-Sys-Speed-Check is a Linux-based command-line tool that checks the speed of disk, CPU, and internet connection on Linux.
+Owned by ITC, Sys-Speed-Check is a Linux-based multi-use CLI tool that checks your system's speed, CPU and internet connection, and provides you with a better experience. It also removes temporary files and useless files.
 # Features
 This script has the following features:
 
