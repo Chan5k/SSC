@@ -45,18 +45,25 @@ def main():
             print("Invalid selection.")
 
         # ask the user if they want to return to the main menu or exit
-        print()
-        choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
-        print()
+        # ask the user if they want to return to the main menu or exit
+print()
+choice = input("Press Enter to return to the main menu or type 'exit' to quit: ")
+print()
 
-        # clear the screen if the user chooses to return to the main menu
-        if choice == "" or choice.lower() == "exit":
-            if os.name == "nt":
-                os.system("cls")
-            else:
-                os.system("clear")
-        else:
-            sys.exit()
+# clear the screen if the user chooses to return to the main menu
+if choice == "":
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
+elif choice.lower() == "exit":
+    sys.exit()
+else:
+    print("Invalid input. Returning to main menu.")
+    if os.name == "nt":
+        os.system("cls")
+    else:
+        os.system("clear")
 
 
 if __name__ == "__main__":
