@@ -3,14 +3,14 @@ Sys-Speed-Check is a Linux-based command-line tool that checks the speed of disk
 # Features
 This script has the following features:
 
-     •	Check disk speed
-     •	Check CPU speed
-     •	Check internet connection
-     •	Check security level
-     •    Improve firewall rules
-     •    Improve internet speed
-     •    Change DNS servers
-     •    Check DNS servers
+    Check disk speed
+    Check CPU speed
+    Check internet connection
+    Check security level
+    Improve firewall rules
+    Improve internet speed
+    Change DNS servers
+    Check DNS servers
 # Usage
      
      python3 main.py
