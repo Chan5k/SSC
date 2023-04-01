@@ -1,8 +1,8 @@
-from improve_internet_speed import improve_internet_speed
+
 import os
 import sys
 sys.path.append("scripts")
-
+from scripts.improve_internet_speed import improve_internet_speed
 from internet import test_internet_speed
 from cpu import test_cpu_stress, get_cpu_score
 from disk import test_disk_speed
