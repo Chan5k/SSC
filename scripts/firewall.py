@@ -27,8 +27,4 @@ def improve_firewall_rules():
     subprocess.run(["sudo", "ufw", "allow", "9418/udp"])
     subprocess.run(["sudo", "ufw", "allow", "33434:33523/udp"])
     subprocess.run(["sudo", "ufw", "allow", "33434:33523/tcp"])
-    subprocess.run(["sudo", "ufw", "allow", "151.101.2.219"])
-    subprocess.run(["sudo", "ufw", "allow", "151.101.66.219"])
-    subprocess.run(["sudo", "ufw", "allow", "151.101.130.219"])
-    subprocess.run(["sudo", "ufw", "allow", "151.101.194.219"])
     print("Firewall rules updated.")
