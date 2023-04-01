@@ -2,6 +2,7 @@ import sys
 from scripts.internet_speed_test import test_internet_speed
 from scripts.cpu_stress_test import test_cpu_stress
 from scripts.disk_speed_test import test_disk_speed
+from scripts.security_test import test_security
 
 def main():
     # ask the user what test they want to run
@@ -9,6 +10,7 @@ def main():
     print("1. Internet speed test")
     print("2. CPU stress test")
     print("3. Disk speed test")
+    print("4. Security test")
     selection = input("> ")
 
     # execute the selected test
@@ -19,6 +21,8 @@ def main():
         test_cpu_stress(duration)
     elif selection == "3":
         test_disk_speed()
+    elif selection == "4":
+        test_security()
     else:
         print("Invalid selection.")
         sys.exit(1)
