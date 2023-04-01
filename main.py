@@ -16,7 +16,7 @@ from check_dns_servers import check_dns_servers
 from remove_useless_files import remove_useless_files
 from scan_wifi_networks import scan_wifi_networks
 from show_interfaces import show_interfaces
-from ping import ping
+from ping_website import ping_website
 
 def main():
     while True:
@@ -66,7 +66,7 @@ def main():
             show_interfaces()
         elif selection == "12":
             target = input("Enter a website to ping: ")
-            ping(target)
+            ping_website(target)
         elif selection == "13":
             sys.exit()
 
