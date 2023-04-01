@@ -23,19 +23,19 @@ def main():
     while True:
         # ask the user what test they want to run
         print("What would you like to do? Enter the corresponding number:")
-        print("1. Test internet speed")
-        print("2. Improve internet speed")
-        print("3. Test CPU stress")
-        print("4. Test disk speed ")
+        print("1. Test internet speed (Performs an internet speed test)")
+        print("2. Improve internet speed (Improves your internet speed. Use at your own risk)")
+        print("3. Test CPU stress (Does a CPU stress test)")
+        print("4. Test disk speed (Does a disk stress test)")
         print("5. Test security (Don't use this on a production server!)")
         print("6. Improve firewall rules (Don't use this on a production server!)")
-        print("7. Change DNS servers")
-        print("8. Check DNS servers")
-        print("9. Remove useless files")
+        print("7. Change DNS servers (Be careful when using this!)")
+        print("8. Check DNS servers (Shows your DNS servers atm)")
+        print("9. Remove useless files (Removes files that are not used anymore or temp files)")
         print("10. Scan available WiFi networks (Only works if you use WiFi)")
-        print("11. Show available network interfaces")
+        print("11. Show available network interfaces (Displays your network interfaces with their IPv4)")
         print("12. Ping a website (Will be improved)")
-        print("13. Exit")
+        print("13. Exit (Exits the program)")
         selection = input("> ")
 
         # execute the selected option
