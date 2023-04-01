@@ -12,6 +12,7 @@ This script has the following features:
     Change DNS servers
     Check DNS servers
     Remove useless files
+    Malware scan (Removal coming soon)
 # Usage
      
      python3 main.py
