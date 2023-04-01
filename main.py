@@ -1,5 +1,7 @@
 import os
 import sys
+import subprocess
+
 sys.path.append("scripts")
 
 from internet import test_internet_speed
@@ -7,8 +9,10 @@ from cpu import test_cpu_stress, get_cpu_score
 from disk import test_disk_speed
 from security import test_security
 from firewall import improve_firewall_rules
-from change_dns_servers import change_dns_servers
 from improve_internet_speed import improve_internet_speed
+from change_dns_servers import change_dns_servers
+
+
 def main():
     while True:
         # ask the user what test they want to run
@@ -27,7 +31,8 @@ def main():
         if selection == "1":
             test_internet_speed()
         elif selection == "2":
-            improve_internet_speed()
+            interface = input("Enter the name of your network interface (e.g. eth0): ")
+            improve_internet_speed(interface)
         elif selection == "3":
             duration = int(input("Enter the duration of the CPU stress test (in seconds): "))
             test_cpu_stress(duration)
@@ -40,7 +45,10 @@ def main():
         elif selection == "6":
             improve_firewall_rules()
         elif selection == "7":
-            change_dns_servers()
+            dns_servers = input("Enter the DNS servers you want to use (e.g. '1.1.1.1, 1.0.0.1'): ")
+            change_dns_servers(dns_servers)
+        elif selection == "8":
+            sys.exit()
 
         # ask the user if they want to return to the main menu or exit
         print()
@@ -48,12 +56,21 @@ def main():
         print()
 
         # clear the screen if the user chooses to return to the main menu
-        if choice.lower() == "exit":
-            sys.exit()
-        elif os.name == "nt":
-            os.system("cls")
+        if choice == "" or choice.lower() == "exit":
+            if os.name == "nt":
+                os.system("cls")
+            else:
+                os.system("clear")
+                if selection == "2":
+                    subprocess.run(["sudo", "systemctl", "stop", "systemd-resolved.service"])
+                    subprocess.run(["sudo", "systemctl", "disable", "systemd-resolved.service"])
+                    subprocess.run(["sudo", "systemctl", "stop", "resolvconf.service"])
+                    subprocess.run(["sudo", "systemctl", "disable", "resolvconf.service"])
+                    subprocess.run(["sudo", "rm", "/etc/resolv.conf"])
+                    subprocess.run(["sudo", "touch", "/etc/resolv.conf"])
+                    subprocess.run(["sudo", "chmod", "777", "/etc/resolv.conf"])
         else:
-            os.system("clear")
+            continue
 
 
 if __name__ == "__main__":
